@@ -25,10 +25,11 @@ public final class DSFConstants {
    */
   public static final String ATTR_CUSTOM_PROPERTIES = "customProperties";
 
-  public static final String SERVICE_FACTORYPID_DATASOURCE = "org.everit.osgi.jdbc.dsf.DataSource";
+  public static final String SERVICE_FACTORYPID_DATASOURCE =
+      "org.everit.persistence.jdbc.dsf.ecm.DataSource";
 
   public static final String SERVICE_FACTORYPID_XA_DATASOURCE =
-      "org.everit.osgi.jdbc.dsf.XADataSource";
+      "org.everit.persistence.jdbc.dsf.ecm.XADataSource";
 
   private DSFConstants() {
   }
