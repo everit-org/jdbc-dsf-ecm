@@ -28,6 +28,7 @@ import org.everit.osgi.ecm.annotation.attribute.StringAttributes;
 import org.everit.osgi.ecm.component.ServiceHolder;
 import org.everit.persistence.jdbc.dsf.ecm.DSFConstants;
 import org.everit.persistence.jdbc.dsf.ecm.PriorityConstants;
+import org.osgi.framework.Constants;
 import org.osgi.service.jdbc.DataSourceFactory;
 import org.osgi.service.log.LogService;
 
@@ -72,7 +73,11 @@ import org.osgi.service.log.LogService;
         description = "An array of custom properties that can be specified for DataSourceFactory "
             + "calls. The syntax is 'name=value' where the name cannot contain '=' character. "
             + "There are no escaping rules like in properties files, just type the text that "
-            + "you need. Do not use spaces before and after the '=' character!") })
+            + "you need. Do not use spaces before and after the '=' character!"),
+    @StringAttribute(attributeId = Constants.SERVICE_DESCRIPTION, defaultValue = "",
+        label = "Service Description",
+        description = "The description of this component configuration. It is used to easily "
+            + "identify the service registered by this component.") })
 @PasswordAttributes({
     @PasswordAttribute(attributeId = DataSourceFactory.JDBC_PASSWORD, defaultValue = "",
         priority = PriorityConstants.PRIORITY_07, label = "Password",
