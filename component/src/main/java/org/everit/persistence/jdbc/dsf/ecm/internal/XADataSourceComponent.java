@@ -47,17 +47,17 @@ import aQute.bnd.annotation.headers.ProvideCapability;
     value = ECMExtenderConstants.CAPABILITY_ATTR_CLASS + "=${@class}")
 @StringAttributes({
     @StringAttribute(attributeId = DataSourceFactory.JDBC_MAX_IDLE_TIME,
-        priority = PriorityConstants.PRIORITY_11, label = "Max. idle time"),
+        priority = PriorityConstants.PRIORITY_11, defaultValue = "", label = "Max. idle time"),
     @StringAttribute(attributeId = DataSourceFactory.JDBC_MAX_STATEMENTS,
-        priority = PriorityConstants.PRIORITY_12, label = "Max. statements"),
+        priority = PriorityConstants.PRIORITY_12, defaultValue = "", label = "Max. statements"),
     @StringAttribute(attributeId = DataSourceFactory.JDBC_PROPERTY_CYCLE,
-        priority = PriorityConstants.PRIORITY_13, label = "Property lifecycle"),
+        priority = PriorityConstants.PRIORITY_13, defaultValue = "", label = "Property lifecycle"),
     @StringAttribute(attributeId = DataSourceFactory.JDBC_INITIAL_POOL_SIZE,
-        priority = PriorityConstants.PRIORITY_14, label = "Initial pool size"),
+        priority = PriorityConstants.PRIORITY_14, defaultValue = "", label = "Initial pool size"),
     @StringAttribute(attributeId = DataSourceFactory.JDBC_MIN_POOL_SIZE,
-        priority = PriorityConstants.PRIORITY_15, label = "Min. pool size"),
+        priority = PriorityConstants.PRIORITY_15, defaultValue = "", label = "Min. pool size"),
     @StringAttribute(attributeId = DataSourceFactory.JDBC_MAX_POOL_SIZE,
-        priority = PriorityConstants.PRIORITY_16, label = "Max. pool size") })
+        priority = PriorityConstants.PRIORITY_16, defaultValue = "", label = "Max. pool size") })
 public class XADataSourceComponent extends AbstractDataSource {
 
   private ServiceRegistration<XADataSource> serviceRegistration;
