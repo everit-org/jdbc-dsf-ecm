@@ -60,8 +60,6 @@ public final class AttributePriority {
 
   public static final int P20_LOG_SERVICE = 20;
 
-  public static final int PRIORITY_21 = 21;
-
   private AttributePriority() {
   }
 }
