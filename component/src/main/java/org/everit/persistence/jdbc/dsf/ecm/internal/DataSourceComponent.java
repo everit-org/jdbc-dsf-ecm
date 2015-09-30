@@ -110,7 +110,7 @@ import aQute.bnd.annotation.headers.ProvideCapability;
         priority = DataSourceAttributePriority.P08_JDBC_PASSWORD, label = "Password",
         description = "Password that is used during database authentication.") })
 @IntegerAttributes({
-    @IntegerAttribute(attributeId = DSFUtil.ATTR_LOGIN_TIMEOUT, defaultValue = 0,
+    @IntegerAttribute(attributeId = DSFConstants.ATTR_LOGIN_TIMEOUT, defaultValue = 0,
         priority = DataSourceAttributePriority.P19_LOGIN_TIMEOUT, label = "Login timeout",
         description = "Sets the maximum time in seconds that this data source will wait while "
             + "attempting to connect to a database.  A value of zero specifies that the timeout "

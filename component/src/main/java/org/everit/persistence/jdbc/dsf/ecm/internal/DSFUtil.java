@@ -36,8 +36,6 @@ import org.osgi.service.log.LogService;
  */
 public final class DSFUtil {
 
-  public static final String ATTR_LOGIN_TIMEOUT = "loginTimeout";
-
   /**
    * Collect DataSource properties.
    *
@@ -101,7 +99,7 @@ public final class DSFUtil {
    */
   public static void initializeDataSource(final CommonDataSource commonDataSource,
       final Map<String, Object> componentProperties, final LogService logService) {
-    Integer loginTimeout = (Integer) componentProperties.get(ATTR_LOGIN_TIMEOUT);
+    Integer loginTimeout = (Integer) componentProperties.get(DSFConstants.ATTR_LOGIN_TIMEOUT);
     if (loginTimeout != null) {
       try {
         commonDataSource.setLoginTimeout(loginTimeout);

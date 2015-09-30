@@ -25,6 +25,8 @@ public final class DSFConstants {
    */
   public static final String ATTR_CUSTOM_PROPERTIES = "customProperties";
 
+  public static final String ATTR_LOGIN_TIMEOUT = "loginTimeout";
+
   public static final String SERVICE_FACTORYPID_DATASOURCE =
       "org.everit.persistence.jdbc.dsf.ecm.DataSource";
 
