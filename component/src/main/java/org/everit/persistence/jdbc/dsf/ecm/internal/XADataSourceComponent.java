@@ -31,7 +31,6 @@ import org.everit.osgi.ecm.annotation.attribute.StringAttributes;
 import org.everit.osgi.ecm.component.ComponentContext;
 import org.everit.osgi.ecm.extender.ECMExtenderConstants;
 import org.everit.persistence.jdbc.dsf.ecm.DSFConstants;
-import org.everit.persistence.jdbc.dsf.ecm.PriorityConstants;
 import org.osgi.framework.ServiceRegistration;
 import org.osgi.service.jdbc.DataSourceFactory;
 
@@ -47,24 +46,31 @@ import aQute.bnd.annotation.headers.ProvideCapability;
     value = ECMExtenderConstants.CAPABILITY_ATTR_CLASS + "=${@class}")
 @StringAttributes({
     @StringAttribute(attributeId = DataSourceFactory.JDBC_MAX_IDLE_TIME,
-        priority = PriorityConstants.PRIORITY_11, defaultValue = "", label = "Max. idle time"),
+        priority = XADataSourceAttributePriority.P11_JDBC_MAX_IDLE_TIME, defaultValue = "",
+        label = "Max. idle time"),
     @StringAttribute(attributeId = DataSourceFactory.JDBC_MAX_STATEMENTS,
-        priority = PriorityConstants.PRIORITY_12, defaultValue = "", label = "Max. statements"),
+        priority = XADataSourceAttributePriority.P12_JDBC_MAX_STATEMENTS, defaultValue = "",
+        label = "Max. statements"),
     @StringAttribute(attributeId = DataSourceFactory.JDBC_PROPERTY_CYCLE,
-        priority = PriorityConstants.PRIORITY_13, defaultValue = "", label = "Property lifecycle"),
+        priority = XADataSourceAttributePriority.P13_JDBC_PROPERTY_CYCLE, defaultValue = "",
+        label = "Property lifecycle"),
     @StringAttribute(attributeId = DataSourceFactory.JDBC_INITIAL_POOL_SIZE,
-        priority = PriorityConstants.PRIORITY_14, defaultValue = "", label = "Initial pool size"),
+        priority = XADataSourceAttributePriority.P14_JDBC_INITIAL_POOL_SIZE, defaultValue = "",
+        label = "Initial pool size"),
     @StringAttribute(attributeId = DataSourceFactory.JDBC_MIN_POOL_SIZE,
-        priority = PriorityConstants.PRIORITY_15, defaultValue = "", label = "Min. pool size"),
+        priority = XADataSourceAttributePriority.P15_JDBC_MIN_POOL_SIZE, defaultValue = "",
+        label = "Min. pool size"),
     @StringAttribute(attributeId = DataSourceFactory.JDBC_MAX_POOL_SIZE,
-        priority = PriorityConstants.PRIORITY_16, defaultValue = "", label = "Max. pool size") })
-public class XADataSourceComponent extends AbstractDataSource {
+        priority = XADataSourceAttributePriority.P16_JDBC_MAX_POOL_SIZE, defaultValue = "",
+        label = "Max. pool size") })
+public class XADataSourceComponent extends DataSourceComponent {
 
   private ServiceRegistration<XADataSource> serviceRegistration;
 
   /**
    * Component activator method.
    */
+  @Override
   @Activate
   public void activate(final ComponentContext<XADataSourceComponent> componentContext) {
     Map<String, Object> componentProperties = componentContext.getProperties();
@@ -91,6 +97,7 @@ public class XADataSourceComponent extends AbstractDataSource {
   /**
    * Component deactivate method.
    */
+  @Override
   @Deactivate
   public void deactivate() {
     if (serviceRegistration != null) {
