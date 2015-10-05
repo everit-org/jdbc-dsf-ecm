@@ -26,6 +26,7 @@ import org.everit.osgi.ecm.annotation.Activate;
 import org.everit.osgi.ecm.annotation.Component;
 import org.everit.osgi.ecm.annotation.ConfigurationPolicy;
 import org.everit.osgi.ecm.annotation.Deactivate;
+import org.everit.osgi.ecm.annotation.ManualService;
 import org.everit.osgi.ecm.annotation.ServiceRef;
 import org.everit.osgi.ecm.annotation.ThreeStateBoolean;
 import org.everit.osgi.ecm.annotation.attribute.IntegerAttribute;
@@ -116,6 +117,7 @@ import aQute.bnd.annotation.headers.ProvideCapability;
             + "attempting to connect to a database.  A value of zero specifies that the timeout "
             + "is the default system timeout if there is one; otherwise, it specifies that there "
             + "is no timeout.") })
+@ManualService(DataSource.class)
 public class DataSourceComponent {
 
   protected DataSourceFactory dataSourceFactory;

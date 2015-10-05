@@ -26,6 +26,7 @@ import org.everit.osgi.ecm.annotation.Activate;
 import org.everit.osgi.ecm.annotation.Component;
 import org.everit.osgi.ecm.annotation.ConfigurationPolicy;
 import org.everit.osgi.ecm.annotation.Deactivate;
+import org.everit.osgi.ecm.annotation.ManualService;
 import org.everit.osgi.ecm.annotation.attribute.StringAttribute;
 import org.everit.osgi.ecm.annotation.attribute.StringAttributes;
 import org.everit.osgi.ecm.component.ComponentContext;
@@ -63,6 +64,7 @@ import aQute.bnd.annotation.headers.ProvideCapability;
     @StringAttribute(attributeId = DataSourceFactory.JDBC_MAX_POOL_SIZE,
         priority = XADataSourceAttributePriority.P16_JDBC_MAX_POOL_SIZE, defaultValue = "",
         label = "Max. pool size") })
+@ManualService(XADataSource.class)
 public class XADataSourceComponent extends DataSourceComponent {
 
   private ServiceRegistration<XADataSource> serviceRegistration;
