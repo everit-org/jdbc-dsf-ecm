@@ -27,7 +27,6 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import javax.sql.CommonDataSource;
 
 import org.everit.persistence.jdbc.dsf.ecm.DSFConstants;
-import org.osgi.service.component.ComponentException;
 import org.osgi.service.jdbc.DataSourceFactory;
 import org.osgi.service.log.LogService;
 
@@ -177,7 +176,7 @@ public final class DSFUtil {
       return;
     }
     if (!(customPropertiesObj instanceof String[])) {
-      throw new ComponentException(DSFConstants.ATTR_CUSTOM_PROPERTIES
+      throw new IllegalArgumentException(DSFConstants.ATTR_CUSTOM_PROPERTIES
           + " property must have the type String[]: " + customPropertiesObj.getClass().getName());
     }
     String[] customProperties = (String[]) customPropertiesObj;
@@ -185,7 +184,8 @@ public final class DSFUtil {
       if ((customProperty != null) && !"".equals(customProperty.trim())) {
         int indexOfEquals = customProperty.indexOf('=');
         if (indexOfEquals < 1) {
-          throw new ComponentException("Invalid syntax for custom property: " + customProperty);
+          throw new IllegalArgumentException(
+              "Invalid syntax for custom property: " + customProperty);
         }
         if (!(indexOfEquals == (customProperty.length() - 1))) {
           String key = customProperty.substring(0, indexOfEquals);
