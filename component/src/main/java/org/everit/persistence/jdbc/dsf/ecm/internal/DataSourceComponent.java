@@ -141,8 +141,7 @@ public class DataSourceComponent {
       DataSource dataSource = dataSourceFactory.createDataSource(jdbcProps);
 
       Hashtable<String, Object> serviceProperties =
-          DSFUtil.collectDataSourceServiceProperties(componentProperties,
-              dataSourceFactoryProperties);
+          new Hashtable<String, Object>(componentProperties);
 
       DSFUtil.initializeDataSource(dataSource, componentProperties, logService);
 

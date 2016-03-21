@@ -83,8 +83,7 @@ public class XADataSourceComponent extends DataSourceComponent {
       XADataSource xaDataSource = dataSourceFactory.createXADataSource(jdbcProps);
 
       Hashtable<String, Object> serviceProperties =
-          DSFUtil.collectDataSourceServiceProperties(componentProperties,
-              dataSourceFactoryProperties);
+          new Hashtable<String, Object>(componentProperties);
 
       DSFUtil.initializeDataSource(xaDataSource, componentProperties, logService);
 

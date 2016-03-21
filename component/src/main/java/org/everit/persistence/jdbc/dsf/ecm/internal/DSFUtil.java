@@ -51,42 +51,6 @@ public final class DSFUtil {
   }
 
   /**
-   * Collect DataSource service properties.
-   *
-   * @param componentProperties
-   *          the component properties.
-   * @param dsfServiceProperties
-   *          the DataSourceFactory properties.
-   * @return the service properties.
-   */
-  public static Hashtable<String, Object> collectDataSourceServiceProperties(
-      final Map<String, Object> componentProperties,
-      final Map<String, Object> dsfServiceProperties) {
-    Hashtable<String, Object> serviceProperties = new Hashtable<String, Object>();
-    DSFUtil.putIfNotNull(componentProperties, serviceProperties, "service.pid");
-    DSFUtil.putVisibleProperties(componentProperties, serviceProperties);
-
-    if (dsfServiceProperties != null) {
-      DSFUtil.putIfNotNull(dsfServiceProperties, serviceProperties,
-          DataSourceFactory.OSGI_JDBC_DRIVER_CLASS);
-      DSFUtil.putIfNotNull(dsfServiceProperties, serviceProperties,
-          DataSourceFactory.OSGI_JDBC_DRIVER_NAME);
-      DSFUtil.putIfNotNull(dsfServiceProperties, serviceProperties,
-          DataSourceFactory.OSGI_JDBC_DRIVER_VERSION);
-      Object dsfServiceId = dsfServiceProperties.get("service.id");
-      if (dsfServiceId != null) {
-        serviceProperties.put("dataSourceFactory.service.id", dsfServiceId);
-      }
-
-      Object dsfServicePId = dsfServiceProperties.get("service.pid");
-      if (dsfServicePId != null) {
-        serviceProperties.put("dataSourceFactory.service.pid", dsfServicePId);
-      }
-    }
-    return serviceProperties;
-  }
-
-  /**
    * Initialize DataSource.
    *
    * @param commonDataSource
