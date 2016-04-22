@@ -39,24 +39,18 @@ import org.osgi.service.jdbc.DataSourceFactory;
     description = "Instantiates and registers a new XADataSource by using a DataSourceFactory"
         + " OSGi service.")
 @StringAttributes({
-    @StringAttribute(attributeId = DataSourceFactory.JDBC_MAX_IDLE_TIME,
-        priority = XADataSourceComponent.P11_JDBC_MAX_IDLE_TIME, defaultValue = "",
-        label = "Max. idle time"),
-    @StringAttribute(attributeId = DataSourceFactory.JDBC_MAX_STATEMENTS,
-        priority = XADataSourceComponent.P12_JDBC_MAX_STATEMENTS, defaultValue = "",
-        label = "Max. statements"),
-    @StringAttribute(attributeId = DataSourceFactory.JDBC_PROPERTY_CYCLE,
-        priority = XADataSourceComponent.P13_JDBC_PROPERTY_CYCLE, defaultValue = "",
-        label = "Property lifecycle"),
-    @StringAttribute(attributeId = DataSourceFactory.JDBC_INITIAL_POOL_SIZE,
-        priority = XADataSourceComponent.P14_JDBC_INITIAL_POOL_SIZE, defaultValue = "",
-        label = "Initial pool size"),
-    @StringAttribute(attributeId = DataSourceFactory.JDBC_MIN_POOL_SIZE,
-        priority = XADataSourceComponent.P15_JDBC_MIN_POOL_SIZE, defaultValue = "",
-        label = "Min. pool size"),
-    @StringAttribute(attributeId = DataSourceFactory.JDBC_MAX_POOL_SIZE,
-        priority = XADataSourceComponent.P16_JDBC_MAX_POOL_SIZE, defaultValue = "",
-        label = "Max. pool size") })
+    @StringAttribute(attributeId = DataSourceFactory.JDBC_MAX_IDLE_TIME, optional = true,
+        priority = XADataSourceComponent.P11_JDBC_MAX_IDLE_TIME, label = "Max. idle time"),
+    @StringAttribute(attributeId = DataSourceFactory.JDBC_MAX_STATEMENTS, optional = true,
+        priority = XADataSourceComponent.P12_JDBC_MAX_STATEMENTS, label = "Max. statements"),
+    @StringAttribute(attributeId = DataSourceFactory.JDBC_PROPERTY_CYCLE, optional = true,
+        priority = XADataSourceComponent.P13_JDBC_PROPERTY_CYCLE, label = "Property lifecycle"),
+    @StringAttribute(attributeId = DataSourceFactory.JDBC_INITIAL_POOL_SIZE, optional = true,
+        priority = XADataSourceComponent.P14_JDBC_INITIAL_POOL_SIZE, label = "Initial pool size"),
+    @StringAttribute(attributeId = DataSourceFactory.JDBC_MIN_POOL_SIZE, optional = true,
+        priority = XADataSourceComponent.P15_JDBC_MIN_POOL_SIZE, label = "Min. pool size"),
+    @StringAttribute(attributeId = DataSourceFactory.JDBC_MAX_POOL_SIZE, optional = true,
+        priority = XADataSourceComponent.P16_JDBC_MAX_POOL_SIZE, label = "Max. pool size") })
 @ManualServices(@ManualService(XADataSource.class))
 public class XADataSourceComponent extends AbstractDataSourceComponent<XADataSource> {
 

@@ -46,46 +46,41 @@ import org.osgi.service.log.LogService;
  *          The type of the service that is registered.
  */
 @StringAttributes({
-    @StringAttribute(attributeId = DataSourceFactory.JDBC_URL,
+    @StringAttribute(attributeId = DataSourceFactory.JDBC_URL, optional = true,
         priority = AbstractDataSourceComponent.ATTR_P_JDBC_URL, label = "Jdbc URL",
         description = "The Jdbc Url that will be used to connect to the database."),
-    @StringAttribute(attributeId = DataSourceFactory.JDBC_NETWORK_PROTOCOL,
-        priority = AbstractDataSourceComponent.ATTR_P_JDBC_NETWORK_PROTOCOL, defaultValue = "",
+    @StringAttribute(attributeId = DataSourceFactory.JDBC_NETWORK_PROTOCOL, optional = true,
+        priority = AbstractDataSourceComponent.ATTR_P_JDBC_NETWORK_PROTOCOL,
         label = "Network protocol",
         description = "The network protocol of the JDBC channel. When Jdbc URL is provided, "
             + "normally this setting is ignored."),
-    @StringAttribute(attributeId = DataSourceFactory.JDBC_SERVER_NAME,
-        priority = AbstractDataSourceComponent.ATTR_P_JDBC_SERVER_NAME, defaultValue = "",
-        label = "Server name",
+    @StringAttribute(attributeId = DataSourceFactory.JDBC_SERVER_NAME, optional = true,
+        priority = AbstractDataSourceComponent.ATTR_P_JDBC_SERVER_NAME, label = "Server name",
         description = "The name or IP address of the database server. When Jdbc URL is provided, "
             + "normally this setting is ignored."),
-    @StringAttribute(attributeId = DataSourceFactory.JDBC_PORT_NUMBER,
-        priority = AbstractDataSourceComponent.ATTR_P_JDBC_PORT_NUMBER, defaultValue = "",
-        label = "Port",
+    @StringAttribute(attributeId = DataSourceFactory.JDBC_PORT_NUMBER, optional = true,
+        priority = AbstractDataSourceComponent.ATTR_P_JDBC_PORT_NUMBER, label = "Port",
         description = "The port where the database server listens on. When Jdbc URL is provided, "
             + "normally this setting is ignored."),
-    @StringAttribute(attributeId = DataSourceFactory.JDBC_DATABASE_NAME,
-        priority = AbstractDataSourceComponent.ATTR_P_JDBC_DATABASE_NAME, defaultValue = "",
-        label = "Database name",
+    @StringAttribute(attributeId = DataSourceFactory.JDBC_DATABASE_NAME, optional = true,
+        priority = AbstractDataSourceComponent.ATTR_P_JDBC_DATABASE_NAME, label = "Database name",
         description = "Name of the database on the server. When Jdbc URL is provided, "
             + "normally this setting is ignored."),
-    @StringAttribute(attributeId = DataSourceFactory.JDBC_USER,
-        priority = AbstractDataSourceComponent.ATTR_P_JDBC_USER, defaultValue = "",
-        label = "User name",
+    @StringAttribute(attributeId = DataSourceFactory.JDBC_USER, optional = true,
+        priority = AbstractDataSourceComponent.ATTR_P_JDBC_USER, label = "User name",
         description = "The name of the user that is used during database authentication."),
-    @StringAttribute(attributeId = DataSourceFactory.JDBC_DATASOURCE_NAME,
-        priority = AbstractDataSourceComponent.ATTR_P_JDBC_DATASOURCE_NAME, defaultValue = "",
+    @StringAttribute(attributeId = DataSourceFactory.JDBC_DATASOURCE_NAME, optional = true,
+        priority = AbstractDataSourceComponent.ATTR_P_JDBC_DATASOURCE_NAME,
         label = "DataSource name",
         description = "Name of the data source."),
-    @StringAttribute(attributeId = DataSourceFactory.JDBC_DESCRIPTION,
-        priority = AbstractDataSourceComponent.ATTR_P_JDBC_DESCRIPTION, defaultValue = "",
+    @StringAttribute(attributeId = DataSourceFactory.JDBC_DESCRIPTION, optional = true,
+        priority = AbstractDataSourceComponent.ATTR_P_JDBC_DESCRIPTION,
         label = "DataSource description",
         description = "Description of the data source."),
-    @StringAttribute(attributeId = DataSourceFactory.JDBC_ROLE_NAME,
-        priority = AbstractDataSourceComponent.ATTR_P_JDBC_ROLE_NAME, defaultValue = "",
-        label = "Role name",
+    @StringAttribute(attributeId = DataSourceFactory.JDBC_ROLE_NAME, optional = true,
+        priority = AbstractDataSourceComponent.ATTR_P_JDBC_ROLE_NAME, label = "Role name",
         description = "The name of the role that the datasource will connect with."),
-    @StringAttribute(attributeId = DSFConstants.ATTR_CUSTOM_PROPERTIES, defaultValue = "",
+    @StringAttribute(attributeId = DSFConstants.ATTR_CUSTOM_PROPERTIES, optional = true,
         multiple = ThreeStateBoolean.TRUE,
         priority = AbstractDataSourceComponent.ATTR_P_CUSTOM_PROPERTIES,
         label = "Custom properties",
@@ -93,16 +88,16 @@ import org.osgi.service.log.LogService;
             + "calls. The syntax is 'name=value' where the name cannot contain '=' character. "
             + "There are no escaping rules like in properties files, just type the text that "
             + "you need. Do not use spaces before and after the '=' character!"),
-    @StringAttribute(attributeId = Constants.SERVICE_DESCRIPTION, defaultValue = "",
-        label = "Service Description",
+    @StringAttribute(attributeId = Constants.SERVICE_DESCRIPTION,
+        defaultValue = "Created via DataSourceFactory", label = "Service Description",
         description = "The description of this component configuration. It is used to easily "
             + "identify the service registered by this component.") })
 @PasswordAttributes({
-    @PasswordAttribute(attributeId = DataSourceFactory.JDBC_PASSWORD, defaultValue = "",
+    @PasswordAttribute(attributeId = DataSourceFactory.JDBC_PASSWORD, optional = true,
         priority = AbstractDataSourceComponent.ATTR_P_JDBC_PASSWORD, label = "Password",
         description = "Password that is used during database authentication.") })
 @IntegerAttributes({
-    @IntegerAttribute(attributeId = DSFConstants.ATTR_LOGIN_TIMEOUT, defaultValue = 0,
+    @IntegerAttribute(attributeId = DSFConstants.ATTR_LOGIN_TIMEOUT, optional = true,
         priority = AbstractDataSourceComponent.ATTR_P_LOGIN_TIMEOUT, label = "Login timeout",
         description = "Sets the maximum time in seconds that this data source will wait while "
             + "attempting to connect to a database.  A value of zero specifies that the timeout "
