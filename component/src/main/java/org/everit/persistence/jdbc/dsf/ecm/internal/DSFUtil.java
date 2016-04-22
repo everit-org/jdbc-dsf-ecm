@@ -26,6 +26,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 import javax.sql.CommonDataSource;
 
+import org.everit.osgi.ecm.component.PasswordHolder;
 import org.everit.persistence.jdbc.dsf.ecm.DSFConstants;
 import org.osgi.service.jdbc.DataSourceFactory;
 import org.osgi.service.log.LogService;
@@ -46,7 +47,12 @@ public final class DSFUtil {
       final Map<String, Object> componentProperties) {
     Properties jdbcProps = new Properties();
     DSFUtil.putVisibleProperties(componentProperties, jdbcProps);
-    DSFUtil.putIfNotNull(componentProperties, jdbcProps, DataSourceFactory.JDBC_PASSWORD);
+
+    Object passwordObj = componentProperties.get(DataSourceFactory.JDBC_PASSWORD);
+    if (passwordObj != null) {
+      PasswordHolder passwordHolder = (PasswordHolder) passwordObj;
+      jdbcProps.put(DataSourceFactory.JDBC_PASSWORD, passwordHolder.getPassword());
+    }
     return jdbcProps;
   }
 
